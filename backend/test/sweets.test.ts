@@ -13,7 +13,9 @@ describe('Sweets API', () => {
   await SweetModel.deleteMany({});
   await UserModel.deleteMany({});
     // Create admin user and get token
-  const admin = await UserModel.create({ username: 'admin', email: 'admin@test.com', password: 'pass', role: 'admin' });
+  const bcrypt = require('bcryptjs');
+  const hashedPassword = await bcrypt.hash('pass', 10);
+  const admin = await UserModel.create({ username: 'admin', email: 'admin@test.com', password: hashedPassword, role: 'admin' });
   adminToken = jwt.sign({ id: admin._id, role: admin.role }, process.env.JWT_SECRET || 'secret');
   });
 

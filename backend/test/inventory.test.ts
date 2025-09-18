@@ -5,21 +5,23 @@ import mongoose from 'mongoose';
 import { SweetModel } from '../src/models/Sweet';
 import { UserModel } from '../src/models/User';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 
 let userToken: string, adminToken: string, sweetId: string;
 
 describe('Inventory API', () => {
   beforeAll(async () => {
-  await mongoose.connect(process.env.url_mongo||"");
-  await SweetModel.deleteMany({});
-  await UserModel.deleteMany({});
-     const timestamp = Date.now();
-     const user = await UserModel.create({ username: `user_${timestamp}`, email: `user_${timestamp}@test.com`, password: 'pass', role: 'user' });
-     const admin = await UserModel.create({ username: `admin_${timestamp}`, email: `admin_${timestamp}@test.com`, password: 'pass', role: 'admin' });
-     userToken = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET || 'secret');
-     adminToken = jwt.sign({ id: admin._id, role: admin.role }, process.env.JWT_SECRET || 'secret');
-     const sweet = await SweetModel.create({ name: 'Rasgulla', category: 'Indian', price: 20, quantity: 5 });
-     sweetId = String(sweet._id);
+    await mongoose.connect(process.env.url_mongo || "");
+    await SweetModel.deleteMany({});
+    await UserModel.deleteMany({});
+    const timestamp = Date.now();
+    const hashedPassword = await bcrypt.hash('pass', 10);
+    const user = await UserModel.create({ username: `user_${timestamp}`, email: `user_${timestamp}@test.com`, password: hashedPassword, role: 'user' });
+    const admin = await UserModel.create({ username: `admin_${timestamp}`, email: `admin_${timestamp}@test.com`, password: hashedPassword, role: 'admin' });
+    userToken = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET || 'secret');
+    adminToken = jwt.sign({ id: admin._id, role: admin.role }, process.env.JWT_SECRET || 'secret');
+    const sweet = await SweetModel.create({ name: 'Rasgulla', category: 'Indian', price: 20, quantity: 5 });
+    sweetId = String(sweet._id);
   });
 
   afterAll(async () => {
