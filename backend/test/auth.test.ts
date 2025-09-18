@@ -1,12 +1,12 @@
-const request = require('supertest');
-const app = require('../src/app');
+import request from 'supertest';
+import app from '../src/app';
 const mongoose = require('mongoose');
-const User = require('../src/models/User');
+const { UserModel } = require('../src/models/User');
 
 describe('Authentication', () => {
   beforeAll(async () => {
     await mongoose.connect(process.env.url_mongo);
-    // await User.deleteMany({});
+  await UserModel.deleteMany({});
   });
 
   afterAll(async () => {

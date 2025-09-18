@@ -1,5 +1,5 @@
-const request = require('supertest');
-const app = require('../src/app');
+import request from 'supertest';
+import app from '../src/app';
 
 describe('GET /', () => {
   it('should return SweetApiWorkingFine', async () => {
