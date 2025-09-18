@@ -1,7 +1,7 @@
 import express, {type  Request, type Response } from 'express';
 import dotenv from 'dotenv';
-import authRoutes from './routes/auth';
-import sweetsRoutes from './routes/sweets';
+import authRoutes from './routes/auth.ts';
+import sweetsRoutes from './routes/sweets.ts';
 
 dotenv.config();
 const app = express();

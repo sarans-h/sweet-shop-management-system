@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import { SweetModel } from '../models/Sweet';
+import { SweetModel } from '../models/Sweet.ts';
 
 export const createSweet = async (req: Request, res: Response) => {
   try {

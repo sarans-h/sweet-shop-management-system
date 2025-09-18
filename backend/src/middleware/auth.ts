@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction, RequestHandler } from 'express';
 import jwt from 'jsonwebtoken';
-import { UserModel } from '../models/User';
+import { UserModel } from '../models/User.ts';
 
 const auth: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers['authorization'];

@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { createSweet, getSweets, searchSweets, updateSweet, deleteSweet, purchaseSweet, restockSweet } from '../controllers/sweetsController';
-import auth from '../middleware/auth';
-import admin from '../middleware/admin';
+import { createSweet, getSweets, searchSweets, updateSweet, deleteSweet, purchaseSweet, restockSweet } from '../controllers/sweetsController.ts';
+import auth from '../middleware/auth.ts';
+import admin from '../middleware/admin.ts';
 
 const router = Router();
 
