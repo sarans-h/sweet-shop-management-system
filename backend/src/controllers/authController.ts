@@ -5,11 +5,11 @@ import jwt from 'jsonwebtoken';
 
 export const register = async (req: Request, res: Response) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password,role } = req.body;
     const existingUser = await UserModel.findOne({ email });
     if (existingUser) return res.status(400).json({ error: 'Email already exists' });
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await UserModel.create({ username, email, password: hashedPassword });
+    const user = await UserModel.create({ username, email, password: hashedPassword ,role});
     const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET || 'secret', { expiresIn: '1d' });
     res.status(201).json({ token });
   } catch (err) {
