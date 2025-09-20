@@ -1,94 +1,38 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Sweet Shop Management System - Client
 
-Currently, two official plugins are available:
-
-
-# Client - Sweet Shop Management System
-
-This is the frontend  for the Sweet Shop Management System, built with React, TypeScript, and Vite.
+This is the frontend for the Sweet Shop Management System, built with React, TypeScript, Vite, and Tailwind CSS.
 
 ## Features
-- User registration and login forms
-- Dashboard to view and search sweets
-- Purchase and admin management UI
-- Responsive, modern design
+- User registration and login with role selection
+- Dashboard to view, search, and purchase sweets
+- Admin panel for CRUD management of sweets
+- Protected routes and role-based access using JWT
+- Responsive, modern UI with central dark mode toggle
+- API endpoints centralized in a constants file
+- Modals for add/edit forms, grid layouts for sweets
 
 ## Setup
 1. Run `npm install` to install dependencies.
 2. Start the app with `npm run dev`.
 
-## My AI Usage
+## Project Structure
+- `src/components/` — All React components (Auth, Dashboard, Admin, Forms)
+- `src/constants/api.ts` — Centralized API endpoint definitions
+- `src/App.tsx` — Routing, dark mode, and main layout
+
+## AI Usage
 
 ### Tools Used
 - GitHub Copilot
-- ChatGPT
 
 ### How I Used Them
-  - 
-  - 
+- Used AI assistant only to generate CSS and UI styles (Tailwind classes, layout suggestions)
+- All business logic, routing, validation, and API integration were manually implemented
 
 ### Reflection
+- AI tools helped speed up UI prototyping and styling
+- Manual coding ensured strict type safety, security, and maintainability
 
+---
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
