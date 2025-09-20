@@ -1,4 +1,4 @@
-**In contributer you are seeing other contributor because in assignment it is added during ai co author commit add username of ai it was in document shared so idid after i understood not to add them  **
+**In contributer you are seeing other contributor because in assignment it is added during ai co author commit add username of ai it was in document shared so i did after sometoime i realised not to add them  **
 # Sweet Shop Management System
 
 A full-stack application for managing a sweet shop, featuring user authentication, sweet inventory management, and a modern React frontend.
